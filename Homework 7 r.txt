@@ -1,0 +1,145 @@
+package homework7;
+
+public class Homework7_1 {
+
+    public static void main(String[] args) {
+            String[] arr = {"apple", "banana", "cherry", "date", "fig"};
+
+            System.out.println("Исходный массив:");
+            printArray(arr);
+
+            reverseArray(arr);
+
+            System.out.println("Массив после замены:");
+            printArray(arr);
+        }
+
+        public static void reverseArray(String[] arr) {
+            int length = arr.length;
+            for (int i = 0; i < length / 2; i++) {
+                String temp = arr[i];
+                arr[i] = arr[length - i - 1];
+                arr[length - i - 1] = temp;
+            }
+        }
+        public static void printArray(String[] arr) {
+            for (String item : arr) {
+                System.out.print(item + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
+C:\Users\milao\.jdks\openjdk-20.0.2\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1\lib\idea_rt.jar=60575:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath C:\Users\milao\IdeaProjects\Java\JavaBasisCourse220823m\out\production\JavaBasisCourse220823m homework7.Homework7_1
+Исходный массив:
+apple banana cherry date fig 
+Массив после замены:
+fig date cherry banana apple 
+
+Process finished with exit code 0
+
+
+
+
+2.
+package homework7;
+
+import java.util.Scanner;
+import java.util.Random;
+public class Homework7_2 {
+
+    public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            Random random = new Random();
+            int n;
+            do {
+                System.out.print("Введите размер массива (целое число больше 3): ");
+                while (!scanner.hasNextInt()) {
+                    System.out.print("Это не целое число. Попробуйте еще раз: ");
+                    scanner.next();
+                }
+                n = scanner.nextInt();
+            } while (n <= 3);
+
+            int[] array = new int[n];
+            int evenCount = 0;
+
+            System.out.println("Исходный массив:");
+
+            for (int i = 0; i < n; i++) {
+                array[i] = random.nextInt(n + 1);
+                System.out.print(array[i] + " ");
+                if (array[i] % 2 == 0) {
+                    evenCount++;
+                }
+            }
+
+            int[] evenArray = new int[evenCount];
+            int index = 0;
+
+            System.out.println("\nМассив из чётных элементов:");
+
+            for (int i = 0; i < n; i++) {
+                if (array[i] % 2 == 0) {
+                    evenArray[index] = array[i];
+                    System.out.print(evenArray[index] + " ");
+                    index++;
+                }
+            }
+        }
+    }
+
+C:\Users\milao\.jdks\openjdk-20.0.2\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1\lib\idea_rt.jar=60585:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath C:\Users\milao\IdeaProjects\Java\JavaBasisCourse220823m\out\production\JavaBasisCourse220823m homework7.Homework7_2
+Введите размер массива (целое число больше 3): 7
+Исходный массив:
+1 2 6 5 2 2 2 
+Массив из чётных элементов:
+2 6 2 2 2 
+Process finished with exit code 0
+
+3.
+package homework7;
+import java.util.Random;
+public class Homework7_3 {
+    public static void main(String[] args) {
+            Random random = new Random();
+
+            int[] array = new int[12];
+
+            // Заполним массив случайными числами из [-15;15]
+            for (int i = 0; i < array.length; i++) {
+                array[i] = random.nextInt(31) - 15;
+            }
+
+            // Найдем максимальный элемент и индекс его последнего вхождения
+            int maxElement = array[0];
+            int lastIndex = 0;
+
+            for (int i = 1; i < array.length; i++) {
+                if (array[i] >= maxElement) {
+                    maxElement = array[i];
+                    lastIndex = i;
+                }
+            }
+
+            System.out.println("Массив из 12 случайных чисел:");
+            for (int number : array) {
+                System.out.print(number + " ");
+            }
+
+            System.out.println("\nМаксимальный элемент: " + maxElement);
+            System.out.println("Индекс последнего вхождения максимального элемента: " + lastIndex);
+        }
+    }
+
+
+C:\Users\milao\.jdks\openjdk-20.0.2\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1\lib\idea_rt.jar=60599:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath C:\Users\milao\IdeaProjects\Java\JavaBasisCourse220823m\out\production\JavaBasisCourse220823m homework7.Homework7_3
+Массив из 12 случайных чисел:
+-6 -14 -15 -4 -10 4 14 15 13 12 2 0 
+Максимальный элемент: 15
+Индекс последнего вхождения максимального элемента: 7
+
+Process finished with exit code 0
+
+
